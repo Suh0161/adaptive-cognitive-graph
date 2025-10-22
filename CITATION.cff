@@ -1,14 +1,14 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 authors:
-  - family-names: "Your Last Name"
-    given-names: "Your First Name"
+  - family-names: "Amir"
+    given-names: "Afif"
     orcid: "https://orcid.org/0000-0000-0000-0000"
 title: "Adaptive Cognitive Graph: A Scalable Architecture for Reasoning-Centric Language Models"
 version: 1.1.0
 date-released: 2024-01-01
-url: "https://github.com/yourusername/acg"
-repository-code: "https://github.com/yourusername/acg"
+url: "https://github.com/Suh0161/adaptive-cognitive-graph"
+repository-code: "https://github.com/Suh0161/adaptive-cognitive-graph"
 license: Apache-2.0
 keywords:
   - machine-learning
@@ -21,8 +21,7 @@ keywords:
 preferred-citation:
   type: article
   authors:
-    - family-names: "Your Last Name"
-      given-names: "Your First Name"
+    - family-names: "Amir"
+      given-names: "Afif"
   title: "Adaptive Cognitive Graph: A Scalable Architecture for Reasoning-Centric Language Models"
   year: 2025
-  journal: "arXiv preprint"
