@@ -798,7 +798,7 @@ A: Pre-trained weights are not yet available. You'll need to train from scratch 
 
 Apache License 2.0
 
-Copyright 2024 afif amir
+Copyright 2025 afif amir
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
