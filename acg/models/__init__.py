@@ -13,7 +13,7 @@ from .adapter import (
     MemoryAdapter,
     AdaptedLinear,
     attach_adapters_to_expert,
-    apply_adapters_to_expert_output
+    apply_adapters_to_expert_output,
 )
 from .verifier import VerifierExpert
 from .fusion import OutputFusionLayer

@@ -6,6 +6,7 @@ This script shows how all components are connected and what data flows between t
 
 import sys
 import os
+
 sys.path.insert(0, os.path.dirname(__file__))
 
 from acg.config import ACGConfig
@@ -17,7 +18,7 @@ def print_component_tree(model, config):
     print("\n" + "=" * 80)
     print("  ACG MODEL COMPONENT TREE")
     print("=" * 80)
-    
+
     print("\nACGModel")
     print("├── config: ACGConfig")
     print("│   ├── d_model:", config.d_model)
@@ -46,7 +47,7 @@ def print_component_tree(model, config):
     print("│   ├── adjacency: Dict (DAG topology)")
     print("│   └── edge_weights: ModuleDict (cross-edge communication)")
     print("│")
-    
+
     if model.adapters:
         print("├── adapters: ModuleDict")
         print("│   └── MemoryAdapter × " + str(config.n_experts))
@@ -54,7 +55,7 @@ def print_component_tree(model, config):
         print("│       ├── lora_B: Parameter (rank=" + str(config.lora_rank) + ")")
         print("│       └── weight_delta: Buffer (EMA)")
         print("│")
-    
+
     print("├── verifier: VerifierExpert")
     print("│   ├── verifier_mlp: VerifierMLP")
     print("│   │   └── layers × " + str(config.verifier_layers))
@@ -71,8 +72,9 @@ def print_data_flow():
     print("\n" + "=" * 80)
     print("  DATA FLOW DIAGRAM")
     print("=" * 80)
-    
-    print("""
+
+    print(
+        """
 INPUT: token_ids (batch, seq_len)
   │
   ▼
@@ -135,7 +137,8 @@ INPUT: token_ids (batch, seq_len)
   │
   ▼
 OUTPUT: (logits, confidence)
-""")
+"""
+    )
 
 
 def print_parameter_flow():
@@ -143,8 +146,9 @@ def print_parameter_flow():
     print("\n" + "=" * 80)
     print("  TRAINING PARAMETER FLOW")
     print("=" * 80)
-    
-    print("""
+
+    print(
+        """
 FORWARD PASS:
   Input → Encoder → Router → Experts → Adapter → Verifier → Fusion → Output
 
@@ -170,7 +174,8 @@ OPTIMIZER STEP:
 ADAPTER EMA UPDATE:
   Update memory adapter weights using exponential moving average:
   θ_ema = β·θ_ema + (1-β)·θ_current
-""")
+"""
+    )
 
 
 def print_import_connections():
@@ -178,8 +183,9 @@ def print_import_connections():
     print("\n" + "=" * 80)
     print("  MODULE IMPORT CONNECTIONS")
     print("=" * 80)
-    
-    print("""
+
+    print(
+        """
 acg/
 ├── __init__.py
 │   └── exports: ACGConfig, ACGModel
@@ -245,7 +251,8 @@ examples/
 └── inference.py
     ├── imports: ACGConfig, ACGModel
     └── uses: Model for generation/evaluation
-""")
+"""
+    )
 
 
 def main():
@@ -253,28 +260,25 @@ def main():
     print("\n" + "=" * 80)
     print("  ACG COMPONENT CONNECTION VISUALIZER")
     print("=" * 80)
-    
+
     # Create a small model for visualization
     config = ACGConfig(
-        d_model=512,
-        n_experts=8,
-        active_experts=2,
-        n_layers=4,
-        expert_layers=2
+        d_model=512, n_experts=8, active_experts=2, n_layers=4, expert_layers=2
     )
-    
+
     model = ACGModel(config)
-    
+
     # Print all visualizations
     print_component_tree(model, config)
     print_data_flow()
     print_parameter_flow()
     print_import_connections()
-    
+
     print("\n" + "=" * 80)
     print("  SUMMARY")
     print("=" * 80)
-    print("""
+    print(
+        """
 ✅ All components are properly connected:
    1. Config → Model → All Components
    2. Data flows: Input → 6 Components → Output
@@ -289,7 +293,8 @@ def main():
 
 ✅ To test inference:
    python examples/inference.py --checkpoint <path> --mode generate
-""")
+"""
+    )
     print("=" * 80 + "\n")
 
 

@@ -1,7 +1,7 @@
 """
 Adaptive Cognitive Graph (ACG) v1.1
 
-A scalable, reasoning-centric neural architecture that unifies Mixture-of-Experts 
+A scalable, reasoning-centric neural architecture that unifies Mixture-of-Experts
 efficiency, dynamic compute allocation, long-context modeling, and built-in self-verification.
 """
 
@@ -17,7 +17,7 @@ from .training import (
     compute_total_loss,
     clip_gradients,
     setup_optimizer,
-    ACGTrainer
+    ACGTrainer,
 )
 
 __all__ = [
@@ -30,5 +30,5 @@ __all__ = [
     "compute_total_loss",
     "clip_gradients",
     "setup_optimizer",
-    "ACGTrainer"
+    "ACGTrainer",
 ]
